@@ -1,8 +1,9 @@
 package com.ecepolat.controller;
 
 import com.ecepolat.dto.DtoEmployee;
+import com.ecepolat.model.RootEntity;
 
 public interface RestEmployeeController {
 
-    public DtoEmployee findEmployeeById(Long id);
+    public RootEntity<DtoEmployee> findEmployeeById(Long id);
 }

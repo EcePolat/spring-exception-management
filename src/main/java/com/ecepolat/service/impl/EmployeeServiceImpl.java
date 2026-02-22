@@ -2,6 +2,9 @@ package com.ecepolat.service.impl;
 
 import com.ecepolat.dto.DtoDepartment;
 import com.ecepolat.dto.DtoEmployee;
+import com.ecepolat.exception.BaseException;
+import com.ecepolat.exception.ErrorMessage;
+import com.ecepolat.exception.MessageType;
 import com.ecepolat.model.Department;
 import com.ecepolat.model.Employee;
 import com.ecepolat.repository.EmployeeRepository;
@@ -25,7 +28,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
         Optional<Employee> optional = employeeRepository.findById(id);
         if(optional.isEmpty()){
-            return null;
+            throw new BaseException(new ErrorMessage(MessageType.NO_RECORD_EXIST, id.toString()));
         }
 
         Employee employee = optional.get();
